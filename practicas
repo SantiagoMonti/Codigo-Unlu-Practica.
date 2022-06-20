@@ -1,0 +1,390 @@
+#####################################################////Repaso////#######################################################################
+# Escribir una función que reciba una lista de elementos y devuelva si se
+# encuentran ordenados de mayor a menor o no.
+def listamayomen(l):
+    m=False
+    i=1
+    while m and i < len(l):
+        if len(l[i-1]) < int(l[i]):
+            m=False
+        i=i+1
+    if m==True:
+        salida="esta ordenada"
+    else:
+        salida="no esta ordenada"
+    return salida
+l=[1,2,3,4,5,6,7,8,9,10]
+print(listamayomen(l))
+pass
+
+#test de lista con contador el cual 
+#cuenta la cantidad de veces
+#que esta el valor en la misma
+fruits = ['apple', 'banana', 'cherry']
+x = fruits.count("cherry")
+print (x)
+pass
+# Cree una función que recibe una lista no vacía l de números enteros y retorna 
+# un entero m con la multiplicación de todos los números de la lista, y un número 
+# entero s con la sumatoria de los elementos de la lista l.
+# Ejemplo: l=[-1,2,3] debe retornar (-6,4)
+# Ejemplo: l=[-1,0,3] debe retornar (0,2)
+def extraeparas(l):
+    lista=[]
+    for i in range(len(l)):
+        if l[i]%2==0:
+            lista.append(l)
+        return lista
+l=[3,4,5,67,8,78]
+print(extraeparas(l))
+pass
+
+# Dada una lista de números enteros y un entero k, escribir una función para
+# cada uno de los siguientes ítems:
+# a- Devuelva tres listas, una con los menores, otra con los mayores y otra con los
+# iguales a k.
+# b- Devuelva una lista con aquellos que son múltiplos de k.
+# c- Devuelva una lista con aquellos que son múltiplos de k y también son pares.
+# d- Devuelva una lista con aquellos que son múltiplos de k y también son impares.
+def lista(n,k):
+    numeros_menores=[]
+    numeros_mayores=[]
+    numeros_iguales=[]
+    numeros_multiplos=[]
+    numeros_multiplos_pares=[]
+    numeros_multiplos_impares=[]
+    for i in range(0,len(n)):
+        if n[i]<k:
+         numeros_mayores.append(n[i])
+        elif n[i]>k:
+            numeros_menores.append(n[i])
+        elif n[i]==k:
+            numeros_iguales.append(n[i])
+        if n[i]%k==0:
+            numeros_multiplos.append(n[i]) 
+        if n[i]%k==0 and n[i]%2==0:
+            numeros_multiplos_pares.append(n[i]) 
+        if n[i]%k==0 and n[i]%2!=0:
+            numeros_multiplos_impares.append(n[i])
+    return (numeros_menores,numeros_mayores,numeros_iguales,numeros_multiplos,numeros_multiplos_pares,numeros_multiplos_impares)
+n=[5,4,11,3,8,21]
+k=10
+print(lista(n,k))
+pass
+
+#Cree un script que le solicite al usuario leer un número entero entre 1 y 100. El
+#programa debe ser capaz de solicitarle al usuario que reingrese el número
+#cuantas veces sea necesario, hasta que el usuario provea un dato válido. Cada
+#vez que detecte un error de validación, informele al usuario cuál fue el error, con
+#los mensajes “El dato ingresado no es numérico.”, o “El número ingresado está
+#fuera del rango permitido.”. Finalmente, cuando el usuario ingrese un dato
+#válido, muestre el mensaje “[NÚMERO] es válido. Gracias!”.
+numero=(input("ingrese un numero entre 1 y 100: "))
+while not numero.isnumeric() or int(numero)<1 or int(numero)>100:
+    if not numero.isnumeric():
+        print(f"el dato: {numero} ingresado no es numerico.")
+    else:
+        print(f"el dato: {numero} esta fuera del rango permitido.")
+    numero=(int(input("ingrese un numero entre 1 y 100: ")))
+print(f"{numero} es valido. Gracias!")
+pass
+
+#Haciendo uso de las funciones para strings que ya conoce, implemente un
+#script que haga lo siguiente:
+#I. Le solicite al usuario ingresar una palabra por teclado. Se debe validar que
+#la palabra tenga al menos una ‘ñ’, que no sea sólo caracteres numéricos, y
+#que no sean sólo espacios en blanco. En caso de no ser válida, se le debe
+#pedir al usuario que la reingrese.
+#II. Informe en pantalla la cantidad de letras de la palabra ingresada.
+#III. Transforme la palabra a mayúsculas, reemplace todas las ‘Ñ’ por ‘N’, y
+#luego muestre el resultado en pantalla.
+letra=input("ingrese una palabra que tenga una ñ: ")
+cantidad=len(letra)
+bol:False
+for i in range (len(letra)):
+    if letra[i]=="ñ":
+        bol=True
+while bol==False or letra.isnumeric() or letra.isdigit():
+    letra=input("ingrese una palabra que tenga una ñ: ")
+    cantidad=len(letra)
+    for i in range (len(letra)):
+        if letra[i]=="ñ":
+            bol=True
+print(f"cantidad de letras validas: {cantidad}")
+reemplazo=letra.replace("ñ","n")
+print(reemplazo.upper())
+pass
+
+#hacer una funcion que devuelba
+#el promedio de la suna de las notas de 
+#una lista de números de los clase de un aula.
+def promedio(clase):
+    return sum(clase)/len(clase)
+clase=[1,2,3,4,5,6,7,8,9,10]
+promedio=promedio(clase)
+print(f"el promedio de la clase es: {promedio}")
+pass
+
+# Cree una función que recibe como parámetros una lista l no vacía de números 
+# enteros, dos números enteros naturales n1 y n2, donde 0<=n1<=n2<len(l), y 
+# un booleano. Si el booleano fuese True, la función retorna 
+# el resultado de sumar los números enteros pares contenidos en el intervalo 
+# l[n1...n2] (si no hay ningún número par en el intervalo retorna 0). Si el 
+# booleano fuese False, la función retorna el resultado de sumar los números 
+# enteros impares contenidos en el intervalo l[n1...n2] (si no hay ningún número 
+# impar en el intervalo retorna 0).
+def sumaSubcadena(l, n1, n2, pares):
+    cantidad= 0
+    if pares == True:
+        for numeros in l:
+            if numeros % 2 == 0:
+                cantidad += 1
+        for suma in range(n1, n2):
+            if suma % 2 == 0:
+                cantidad += 1
+    elif pares == False:
+            for numeros in l:
+                if numeros % 2 == 1:
+                    cantidad += 1
+            for suma in range(n1, n2):
+                if suma % 2 == 1:
+                    cantidad += 1
+    print(cantidad)
+    return cantidad
+pass
+# escriba una funcion en python que permita procesar el nombre y la cantidad de amigos que posee un
+# conjunto de amigos. La funcion debe retornar una lista con los nombres de los amigos que posee
+# y la cantidad de amigos que posee. La funcion debe recibir como parametro una lista de tuplas
+# con el nombre y la cantidad de amigos. 
+def amigos(lista):
+    listaAmigos=[]
+    for amigos in lista:
+        listaAmigos.append(amigos[0])
+        listaAmigos.append(amigos[1])
+    print(listaAmigos)
+    return listaAmigos
+amigos([("juan",2),("pedro",3),("maria",4)])
+pass
+
+#######################################///Fin Repaso///##############################################################################
+
+#######################################///Parcialito///##############################################################################
+
+# Escriba un programa en Python que permita procesar n documentos de texto con los trabajos prácticos de los 
+# estudiantes de un curso. La función recibirá como parámetro la cantidad de documentos que deben ser procesados (n).
+# Por cada documento, el programa debe solicitar ingresar el nombre del archivo y la cantidad de páginas que posee.
+# Por ejemplo, una entrada válida del programa sería el valor “TP-Pérez.odt” para el nombre del documento y 
+# 33 para la cantidad de páginas.
+# Una vez procesados todos los documentos, el programa debe informar:
+# 1.    El nombre del documento con más páginas de todos los procesados.
+# 2.    El promedio de páginas de los documentos procesados.
+def tp ():
+    suma = 0
+    docmax = ""
+    for i in range (3):
+        nombre = input ("Ingrese el Nombre del Archivo: ")
+        pags = int(input("Ingrese la Cantidad de Páginas que posee: "))
+        suma += pags
+        if i == 0:
+            pagsmax = pags
+            docmax = nombre
+        if pagsmax < pags:
+            pagsmax = pags
+            docmax = nombre
+        promedio = suma / 150
+    print (f"El nombre del documento con mas paginas es... {docmax}")
+    print (f"El promedio de paginas es: {promedio}")
+tp()
+
+# Escriba un programa en Python que permita procesar n documentos de texto con los trabajos prácticos de los 
+# estudiantes de un curso. La función recibirá como parámetro la cantidad de documentos que deben ser procesados (n).
+# Por cada documento, el programa debe solicitar ingresar el nombre del archivo y la cantidad de páginas que posee.
+# Por ejemplo, una entrada válida del programa sería el valor “TP-Pérez.odt” para el nombre del documento y 
+# 33 para la cantidad de páginas.
+# Una vez procesados todos los documentos, el programa debe informar:
+# 1.	El nombre del documento con más páginas de todos los procesados.
+# 2.	El promedio de páginas de los documentos procesados.
+def procesarDocumentos(n):
+    promedio=0
+    nombre=[]
+    cantidad=[]
+    for i in range(n):
+        cantidad.append(int(input("ingrese la cantidad de paginas: ")))
+        nombre.append(input("ingrese el nombre del documento: "))
+        promedio+=cantidad[i]
+    print(f"el nombre del documento con mas paginas es: {nombre[cantidad.index(max(cantidad))]}")
+    print(f"el promedio de paginas es: {promedio/n}")
+n=int(input("ingrese la cantidad de documentos a procesar: "))
+procesarDocumentos(n)
+pass
+
+# Escriba una función en Python que reciba como parámetro un 
+# número natural n, y retorne la suma de todos los números entre 1 y n.
+def sumaNumeros(n):
+    suma=0
+    for i in range(1,n+1):
+        suma+=i
+    print(suma)
+n=int(input("Ingrese un numero: "))
+sumaNumeros(n)
+pass
+
+#  Escriba una función en Python que permita procesar la información sobre n webinars (charlas online).
+#  La función recibirá como parámetro la cantidad de webinars que deben ser procesados (n).
+# Por cada webinar, el programa debe solicitar ingresar el título de la actividad y el número de inscriptos.
+#  Por ejemplo, una entrada válida del programa sería el valor 77 para el número de inscriptos
+#  e “Introducción a Redes Neuronales” para el título.
+# Una vez procesados todos los webinars, el programa debe informar:
+# 1.	El título del webinar con la mayor cantidad de inscriptos.
+# 2.	El promedio de inscriptos entre todos los webinars.
+def procesarWebinars(n):
+    titulo=[]
+    cantidad=[]
+    for i in range(n):
+        cantidad.append(int(input("ingrese la cantidad de inscriptos: ")))
+        titulo.append(input("ingrese el titulo del webinar: "))
+    print(f"el titulo del webinar con mas inscriptos es: {titulo[cantidad.index(max(cantidad))]}")
+    print(f"el promedio de inscriptos es: {sum(cantidad)/n}")
+procesarWebinars(n)
+pass
+
+# Escriba una función en Python que reciba como parámetros dos números naturales n y m, donde n < m, 
+# (no hace falta validar) y retorne el producto de todos los números entre n y m ellos incluidos. 
+# Ejemplo, n=2, m=4, resultado=2*3*4=24
+def productoNumeros(n,m):
+    producto=1
+    for i in range(n,m+1):
+        producto*=i
+    print(f"el producto de todos los numeros son: {producto}")
+n=int(input("ingrese el primer numero: "))
+m=int(input("ingrese el segundo numero: "))
+productoNumeros(n,m)
+pass 
+
+#######################################///fin parcialito///##########################################################################
+
+#####################################///Segundo Parcial///###########################################################################
+
+#||||consigna 2||||#
+# Escriba una función en Python que permita procesar el título y la cantidad de
+# visualizaciones de 150 videos de YouTube.
+# Por ejemplo, una entrada válida del programa sería “Manejo de Listas”
+# para el título y 2500 para las visualizaciones.
+# Una vez procesados todos los videos, el programa debe informar:
+#   El promedio de visualizaciones de los videos.
+#   Indicar (por sí o por no) si algún vídeo posee como título “Boca Campeón 2022”.
+#   El título del video con mayor cantidad de visualizaciones.
+def youtube():
+    promedio=0
+    sumatoria=0
+    mayor_visualizaciones=0
+    nombre_mayor=""
+    se_llama="no"
+    for i in range(1,151):
+        titulo=str(input("ingrese titulo de video: "))
+        visualizaciones=int(input("ingrese cantidad de visualizaciones: "))
+        sumatoria=sumatoria+visualizaciones
+        if titulo =="Boca Campeón 2022":
+                se_llama="si"
+        if visualizaciones > mayor_visualizaciones:
+                mayor_visualizaciones= visualizaciones
+                nombre_mayor=titulo
+    promedio=sumatoria/150
+    print(f"el promedio de visualizaciones es:{promedio}")
+    print(f"el video con mayor cantidad de visualizaciones es: {nombre_mayor}")
+    print(f"algun video se llama Boca Campeón 2022?: {se_llama}")
+youtube()
+pass
+
+#||||consigna 2||||#
+# escriba una funcion en python que permita procesar el nombre y la cantidad de amigos que posee un
+# conjunto de 200 usuarios de facebook. por ejemplo, una entrada valida del programa seria "juan manuel fernandez"
+# para el nombre y 2500 para los amigos.
+# una vez procesados todos los usuarios, el programa debe informar:
+# 1) el promedio de amigos de los usuarios.
+# 2)indicar (por si o por no)si algun usuario se llama "diego maradona"
+# 3)el nombre del usuario con mayor cantidad de amigos
+def facebook():
+    promedio=0
+    sumatoria=0
+    mayor_amigos=0
+    nombre_mayor=""
+    se_llama="no"
+    for i in range(1,201):
+        nombre=str(input("ingrese nombre de usuario: "))
+        amigos=int(input("ingrese cantidad de amigos: "))
+        sumatoria=sumatoria+amigos
+        if nombre =="juan manuel fernandez":
+                se_llama="si"
+        if amigos > mayor_amigos:
+                mayor_amigos= amigos
+                nombre_mayor=nombre
+    promedio=sumatoria/200
+    print(f"el promedio de amigos es:{promedio}")
+    print(f"el usuario con mayor cantidad de amigos es: {nombre_mayor}")
+    print(f"algun usuario se llama juan manuel fernandez?: {se_llama}")
+facebook()
+pass
+
+#||||consigna 3||||#
+#escriba una funcion que reciba un string como parametro
+# y retorne un booleano que identifique si existe la letra "z" en el mismo.
+# por ejemplo. si la funcion recine "programacion" retoranara false
+def letra(let):
+    le=False
+    for i in range(len(let)):
+        if let[i]=="z":
+            le=True
+    return le
+let="azar"
+print(letra(let))
+pass
+
+#||||consigna 3||||#
+#escriba una funcion que reciba un string como parametro
+# y retorne un booleano que identifique si existe la letra "a" en el mismo.
+# por ejemplo. si la funcion recibe "programacion" retoranara True.
+def letra(let):
+    le=False
+    for i in range(len(let)):
+        if let[i]=="a":
+            le=True
+    return le
+let="Programacion"
+print(letra(let))
+pass
+
+#||||consigna 4||||#
+#escriba una funcion en python que reciba como parametro una lista
+# y retorne la cantidad de elementos pares y impares. asi si por ejemplo la funcion recibe
+# la lista l=[5,4,11,3,8,21] debera retornar 3 y 4 respectivamente.
+def lista_e(l):
+    cantidad_pares=0
+    cantidad_impares=0
+    for i in range(0,len(l)):
+        if l[i] % 2==0:
+            cantidad_pares=cantidad_pares+1
+        else: 
+            cantidad_impares=cantidad_pares+1
+    return (cantidad_pares,canitdad_impares)
+l=[3,4,5,-8,-9]
+print(lista_e(l))
+pass
+
+#||||consigna 4||||#
+#escriba una funcion en python que reciba como parametro una lista
+# y retorne la cantidad de elementos positivos y negativos. asi si por ejemplo la funcion recibe
+# la lista l=[5,4,-11,3,8,-21] debera retornar 4 y 2 respectivamente.
+def numero_pos_neg(l):
+    cantidad_pos=0
+    cantidad_neg=0
+    for i in range(0,len(l)):
+        if l[i]>0:
+            cantidad_pos=cantidad_pos+1
+        else:
+            cantidad_neg=cantidad_neg+1
+    return (cantidad_pos,cantidad_neg)
+print(numero_pos_neg([1,2,-3,4,-5,6]))
+pass
+
+#######################################///Fin Parcial///################################################################################
